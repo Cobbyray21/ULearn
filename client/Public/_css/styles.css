@@ -1,0 +1,22 @@
+
+ul{
+  list-style: none;  
+}
+.square{
+
+border-width: 70%, 600px ;
+}
+
+.jumbotron{
+    margin-bottom: 2em;
+    background: linear-gradient(to right, brown , violet, black);
+    color: white;
+    height: 1.5em;
+}
+
+.btn{
+    background: purple;
+    
+    
+    
+}
