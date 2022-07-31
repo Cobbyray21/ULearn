@@ -8,8 +8,8 @@ import Link from "next/link";
 
 const Login= ()=>{
     
-    const [email, setEmail]= useState("go@trytest");
-    const [password, setPassword]= useState("cominggo");
+    const [email, setEmail]= useState("goStand@gmail");
+    const [password, setPassword]= useState("obominus");
     const [Loading, setLoading]= useState(false)
 
     const handlesubmit= async (e)=>{
@@ -72,7 +72,7 @@ const Login= ()=>{
             </form>
                     <p className="text-center p-3 " >
                         Not yet registered? 
-                        <Link href="/login">
+                        <Link href="/register">
                             <a>  Register  </a>
                         </Link>
                         

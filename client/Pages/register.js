@@ -7,9 +7,9 @@ import Link from "next/link";
 
 
 const Register= ()=>{
-    const [name, setName]= useState("go");
-    const [email, setEmail]= useState("go@try#test");
-    const [password, setPassword]= useState("cominggo");
+    const [name, setName]= useState("davido");
+    const [email, setEmail]= useState("goStand@gmail");
+    const [password, setPassword]= useState("obominus");
     const [Loading, setLoading]= useState(false)
 
     const handlesubmit= async (e)=>{

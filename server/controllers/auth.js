@@ -1,6 +1,8 @@
-import user from "../models/user";
+
 import User from "../models/user";
 import { hashPassword, comparePassword } from "../utils/auth";
+import jwt from "jsonwebtoken";
+
 
 export const register = async (req, res) =>{
     
@@ -46,17 +48,17 @@ export const register = async (req, res) =>{
 export const login = async (req, res)=> {
       try {
          //Get data
-         const{name, email, password}= req.body
-         
+         const{email, password}= req.body 
+         console.log(req.body);
          //Validation
-         if(!email){
+         /*if(!email){
             return res.status(400).send("Email required")
          }
          if(!password){
             return res.status(400).send("Password required") 
-         }
-         let userExist = await User.findOne({email}).exec()
-         if(!userExist){
+         }*/
+         let user = await User.findOne({email}).exec()
+         if(!user){
             return res.status(400).send("User Not Found")
          }
 
@@ -64,7 +66,9 @@ export const login = async (req, res)=> {
          //Check password
          const PasswordMatch= await comparePassword(password, user.password)
          
-         const token= jwt.sign({_id: user.id},process.env.JWT_SECRECT, {expiresIn: "7d"} );
+         //token for security
+         const token= jwt.sign({ _id: user._id },`${process.env.JWT_SECRECT}`, 
+            {expiresIn: "7d"} );
          
          //return user email and token to client, exclude password
          user.password= undefined;
@@ -79,7 +83,7 @@ export const login = async (req, res)=> {
 
       } catch (err) {
          return res.status(400).send("Error !!, Try Again "),
-         console.log("Error Try Again", err)
+         console.log("Error =>", err)
       }
 }
 
